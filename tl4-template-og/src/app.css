@@ -1,0 +1,468 @@
+/* ==============================================================
+   BOOTSTRAP IMPORT – Nutzt Bootstrap 5.3.3 für grundlegendes Grid & Komponenten
+   ============================================================== */
+/* Bootstrap CSS wird per CDN eingebunden, um Grid-System und UI-Komponenten nutzen zu können */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css");
+
+/* ==============================================================
+   GLOBAL: Schrift, Farben und allgemeine Darstellungsqualität
+   ============================================================== */
+/* Grundlegende globale Stile, Schriftarten, Farben und Textoptimierungen */
+:root {
+  /* Schriftfamilie, bevorzugt Inter, dann System-Schriftarten als Fallback */
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  /* Zeilenhöhe und Schriftgewicht für gute Lesbarkeit */
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* Automatische Anpassung an helles oder dunkles Theme des Systems */
+  color-scheme: light dark;
+
+  /* Standardtextfarbe (schwarz) und Hintergrund (weiß) */
+  color: #000000;
+  background-color: #ffffff;
+
+  /* Optimierungen zur Schriftglättung und Renderingqualität */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Entfernt Browser-Standardabstände, sorgt für volle Breite und verhindert horizontales Scrollen */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ==============================================================
+   LINKS – Standardfarbe und Hoververhalten
+   ============================================================== */
+/* Linkstil: mittleres Gewicht, klare blaue Farbe, keine Unterstreichung außer geerbt */
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+/* Hoverfarbe für Links: etwas dunkleres Blau */
+a:hover {
+  color: #535bf2;
+}
+
+/* ==============================================================
+   TYPOGRAFIE – Hauptüberschrift
+   ============================================================== */
+/* Hauptüberschrift sehr groß und kompakt */
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+/* ==============================================================
+   APP-CONTAINER – Zentrale App-Struktur, z. B. für Vue/React
+   ============================================================== */
+/* Hauptcontainer mit voller Breite, zentriertem Text und Box-Sizing */
+#app {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* ==============================================================
+   HEADER – Oberer Seitenbereich mit Logo und Text
+   ============================================================== */
+/* Header als flexbox, zentriert Inhalt horizontal und vertikal, gelber Hintergrund */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #F2B90F; /* Gelber Hintergrund */
+}
+
+/* Logo links neben Text, fixierte Breite und etwas Abstand rechts */
+.logo {
+  width: 180px;
+  height: auto;
+  flex-shrink: 0; /* Verhindert Schrumpfen */
+  padding-right: 10px;
+}
+
+/* Container für Überschrift und Untertitel, max. 60% Breite */
+.text-container {
+  max-width: 60%;
+}
+
+/* Überschrift im Header: mittlere Schriftgröße, Abstand nach unten, fett */
+.header h1 {
+  font-size: 2.2rem;
+  margin: 0 0 0.75rem 0;
+  font-weight: 600;
+}
+
+/* Untertitel im Header: kleinere Schrift, schwarz, ohne Abstand */
+.header h2 {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 600;
+  color: black;
+}
+
+/* ==============================================================
+   BACKGROUND – Sektion mit Hintergrundbild und Overlay
+   ============================================================== */
+/* Bereich mit Vollbild-Hintergrundbild, Mindesthöhe, weißer Text und Overlay */
+.background-wrapper {
+  position: relative;
+  width: 100vw;
+  min-height: 600px;
+  background: url('/background.jpg') center/cover no-repeat;
+  padding: 2rem 0;
+  color: white;
+  overflow: hidden;
+}
+
+/* Dunkles, halbtransparentes Overlay über dem Hintergrundbild für bessere Lesbarkeit */
+.background-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* Transparenter Schwarzton */
+  z-index: 0;
+}
+
+/* Container für Inhalte über dem Overlay, z-Index erhöht damit Inhalt sichtbar bleibt */
+.content-container {
+  position: relative;
+  z-index: 1; /* Inhalt liegt über Overlay */
+  padding: 0 1rem;
+}
+
+/* ==============================================================
+   REVIEW CARDS – Design der einzelnen Bewertungskarten
+   ============================================================== */
+/* Karte für einzelne Bewertungen: feste Breite, türkise Farbe, Padding, flexbox vertikal */
+.review-card {
+  width: 400px;
+  min-height: 220px;
+  background-color: #208C81; /* Türkisgrün */
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.2s ease;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+/* Leichter Vergrößerungseffekt bei Hover */
+.review-card:hover {
+  transform: scale(1.01);
+}
+
+/* Kopfzeile der Karte: flexbox mit Abstand zwischen Name und Sternen */
+.header-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Benutzername fett und weiß */
+.username {
+  font-size: 0.92rem;
+  color: white;
+  font-weight: 600;
+}
+
+/* Sternbewertung als flexbox mit Abstand zwischen Sternen */
+.stars {
+  font-size: 1.2rem;
+  display: flex;
+  gap: 2px;
+}
+
+/* Gefüllte Sterne goldfarben */
+.stars i {
+  color: gold;
+}
+
+/* Leere Sterne hellgrau */
+.stars i.regular {
+  color: lightgray;
+}
+
+/* Bewertungstitel sehr fett und etwas größer */
+.title {
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Bewertungstext etwas kleiner, weiß und halbfett */
+.text {
+  font-size: 0.92rem;
+  color: white;
+  font-weight: 500;
+}
+
+/* ==============================================================
+   REVIEWS SECTION – Layout der gesamten Bewertungsübersicht
+   ============================================================== */
+/* Bereich um Bewertungen mit Abstand innen */
+.reviews-wrapper {
+  padding: 2rem;
+}
+
+/* Nachricht, wenn keine Bewertungen vorliegen, kursiv und zentriert */
+.empty-message {
+  margin-top: 2rem;
+  font-style: italic;
+  color: white;
+  text-align: center;
+}
+
+/* Flexbox-Container für Bewertungen mit Lücke und Umbruch */
+.reviews-container {
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Flex-Verhalten je nach Anzahl der Karten: bei 1 oder 2 Karten fixe Breite */
+.reviews-container.one > div,
+.reviews-container.two > div {
+  flex: 0 0 400px;
+}
+
+/* Ab 3 Karten flexibles Layout mit max. Breite */
+.reviews-container.more > div {
+  flex: 1 1 400px;
+  max-width: 400px;
+}
+
+/* ==============================================================
+   FORMULARBEREICH – Bewertung abgeben
+   ============================================================== */
+/* Haupt-Formularreihe mit linksseitigem Abstand, rechts kein Abstand */
+.form-main-row {
+  margin-left: 2rem;
+  margin-right: 0;
+}
+
+/* Linke Spalte des Formulars mit viel links Padding */
+.form-col-left {
+  padding-left: 5.5rem;
+  padding-right: 0;
+}
+
+/* Mittlere Spalte nimmt ganze Breite */
+.form-col-middle {
+  max-width: 100%;
+}
+
+/* Rechte Spalte mit Button hat unten Padding und negative linke Marge (überlappt?) */
+.form-col-right {
+  padding-bottom: 1rem;
+  margin-left: -6rem;
+}
+
+/* Formularzeile mit horizontalem flexbox-Layout und Abstand unten */
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Label nimmt 50% Breite, rechtsbündig mit Abstand rechts */
+.form-row label {
+  width: 50%;
+  margin-bottom: 0;
+  padding-right: 0.8rem !important;
+  text-align: right;
+}
+
+/* Eingabefelder und Selects 65% Breite, kleine Schrift */
+.form-row input,
+.form-row select,
+.form-row textarea {
+  width: 65%;
+  font-size: 0.85rem;
+}
+
+/* Textarea mit kleiner Schrift, keine Größenänderung erlaubt */
+textarea.form-control {
+  font-size: 0.85rem;
+  resize: none;
+}
+
+/* Standardisierte Eingabe- und Auswahlfelder mit fixierter Höhe und schwarzem Rahmen */
+.custom-input,
+.custom-select {
+  height: 32px;
+  border-radius: 0;
+  border: 1px solid black;
+}
+
+/* Select-Feld mit eigenem Pfeil-Symbol als Hintergrundbild */
+.custom-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,..."); /* Pfeil-SVG, ggf. anpassen */
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2rem;
+}
+
+/* Mehrzeiliges Textfeld mit fixer Mindesthöhe und max. Breite */
+.custom-textarea {
+  min-height: 97px !important;
+  max-width: 320px;
+  border-radius: 0;
+  border: 1px solid black;
+}
+
+/* Stil für Absende-Button mit rundem Radius und gelbem Hintergrund */
+.custom-submit-button {
+  min-width: 140px;
+  border-radius: 24px;
+  padding: 0.2em;
+  background-color: #F2CC0F;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+/* Button Hovereffekt: dunkleres Gelb, weiße Schrift */
+.custom-submit-button:hover {
+  background-color: #d4b10c;
+  color: white;
+}
+
+/* ==============================================================
+   LIGHT MODE – spezifische Anpassung für helles Farbschema
+   ============================================================== */
+/* Anpassungen bei hellem Systemfarbschema */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547; /* Dunklere Textfarbe */
+    background-color: #ffffff; /* Weißer Hintergrund */
+  }
+
+  /* Link-Hoverfarbe etwas heller */
+  a:hover {
+    color: #747bff;
+  }
+
+  /* Buttons hellgrauer Hintergrund und dunkle Schrift */
+  button {
+    background-color: #f9f9f9;
+    color: #213547;
+  }
+}
+
+/* ==============================================================
+   RESPONSIVE – Optimierungen für Tablets und Smartphones
+   ============================================================== */
+/* Anpassungen bei Bildschirmbreiten kleiner 992px (Tablets, kleinere Geräte) */
+@media (max-width: 991.98px) {
+  /* Formularspalten untereinander statt nebeneinander für bessere Lesbarkeit */
+  .form-main-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  /* Jede Formularspalte nimmt 100% Breite und zentriert Inhalt */
+  .form-col-left,
+  .form-col-middle,
+  .form-col-right {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Formularzeilen vertikal ausrichten, zentrieren, Abstand unten */
+  .form-row {
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Labels 100% breit, zentriert mit kleinem Abstand unten */
+  .form-row label {
+    width: 100% !important;
+    text-align: center !important;
+    margin-bottom: 0.3rem !important;
+  }
+
+  /* Eingabefelder und Selects breiter, zentriert */
+  .form-row input,
+  .form-row select {
+    width: 80% !important;
+    margin: 0 auto !important;
+  }
+
+  /* Textarea auf feste Breite zentriert */
+  textarea.form-control {
+    width: 320px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Rechte Spalte zentriert ausrichten */
+  .form-col-right {
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* Button zentriert und mit Mindestbreite */
+  .form-col-right button {
+    margin: 0 auto !important;
+    min-width: 140px !important;
+  }
+
+  /* Header-H1 Schriftgröße kleiner und Margin angepasst */
+  .header h1 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 0 0 0.5rem 45px;
+  }
+
+  /* Header-H2 kleinere Schrift und links eingerückt */
+  .header h2 {
+    font-size: 0.9rem;
+    margin-left: 45px;
+  }
+
+  .custom-submit-button {
+    max-width: 50% !important;        /* dynamisch, zentriert durch Eltern */
+    padding: 0.4em !important;    /* etwas mehr Padding */
+  }
+}
+
+/* Weitere Anpassungen bei max. 768px (kleinere Smartphones) */
+@media (max-width: 768px) {
+  /* Linke Formularspalte wird schmaler und zentriert */
+  .form-col-left {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  .custom-submit-button {
+    max-width: 50% !important;        /* dynamisch, zentriert durch Eltern */
+    padding: 0.4em !important;    /* etwas mehr Padding */
+  }
+}
