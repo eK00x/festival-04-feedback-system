@@ -1,5 +1,11 @@
 # T04 Festival Experience Reports (Web Technologies)
 
+### Project Preview
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+  <img src="./4.1.png" alt="Feedback Submission Form" width="400"/>
+  <img src="./4.2.png" alt="Submitted Reports Grid" width="400"/>
+</div>
+
 ## Context
 This project was the final milestone within the "Web Technologies" module. The objective was to utilize a modern JavaScript framework—Svelte 5—to build a robust Single-Page Application (SPA). This milestone focused on state management, component-based architecture, and integrating external CSS frameworks like Bootstrap for responsive design.
 
