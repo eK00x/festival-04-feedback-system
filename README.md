@@ -2,8 +2,8 @@
 
 ### Project Preview
 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-  <img src="./4.1.png" alt="Feedback Submission Form" width="400"/>
-  <img src="./4.2.png" alt="Submitted Reports Grid" width="400"/>
+  <img src="./4.1-screenshot.png" alt="Feedback Submission Form" width="400"/>
+  <img src="./4.2-screenshot.png" alt="Submitted Reports Grid" width="400"/>
 </div>
 
 ## Context
